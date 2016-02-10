@@ -41,8 +41,12 @@
     "baobab": "^2.1.1",
     "baobab-react": "^1.0.0",
     "classnames": "^2.2.1",
+    "history": "^1.17.0",
+    "material-ui": "^0.14.4",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-router": "^2.0.0-rc4",
+    "react-tap-event-plugin": "^0.2.2",
     "superagent": "^1.4.0",
     "superagent-jsonp": "0.0.6"
   }
