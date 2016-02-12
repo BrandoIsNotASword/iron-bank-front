@@ -1,0 +1,22 @@
+.Dashboard {
+  .Dashboard__section {
+    padding: 1em;
+
+    .Dashboard__title {
+      margin-bottom: 1em;
+    }
+
+    .Dashboard__information {
+      font-size: 0.95em;
+      padding: 1em 0;
+    }
+
+    .Dashboard__information:not(:last-child) {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  .Dashboard__section:not(:first-child) {
+    margin-top: 1em;
+  }
+}

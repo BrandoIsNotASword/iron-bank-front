@@ -5,7 +5,7 @@ import { branch } from 'baobab-react/higher-order';
 import Page from '../components/Page';
 import NotificationError from '../components/NotificationError';
 
-import * as LoginActions from '../actions/LoginActions';
+import * as RegisterActions from '../actions/RegisterActions';
 
 const {
   Paper,
@@ -15,7 +15,7 @@ const {
 
 const { Component } = React;
 
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
 
@@ -34,19 +34,21 @@ class Login extends Component {
 
   render() {
     return (
-      <Page>
-        <p>INICIA SESIÓN</p>
+      <Page className="Register">
+        <p>REGISTRO DE CUENTA</p>
+        <p className="Register__subtitle">Ingresa tu contraseña para finalizar registro.</p>
         <NotificationError />
-        <TextField
-          hintText="Código de usuario"
-          floatingLabelText="Código de usuario"
-          onChange={this.handleChange.bind(this, 'code')}
-        />
         <TextField
           hintText="Contraseña"
           floatingLabelText="Contraseña"
           type="password"
           onChange={this.handleChange.bind(this, 'password')}
+        />
+        <TextField
+          hintText="Confirma contraseña"
+          floatingLabelText="Confirma contraseña"
+          type="password"
+          onChange={this.handleChange.bind(this, 'repassword')}
         />
         <RaisedButton
           label="Entrar"
@@ -58,12 +60,12 @@ class Login extends Component {
   }
 }
 
-export default branch(Login, {
+export default branch(Register, {
   cursors: {
-    code: ['login', 'code'],
-    password: ['login', 'password']
+    password: ['register', 'password'],
+    repassword: ['register', 'repassword']
   },
   actions: {
-    ...LoginActions
+    ...RegisterActions
   }
 });

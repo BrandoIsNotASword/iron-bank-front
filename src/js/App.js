@@ -8,6 +8,7 @@ import tree from './tree';
 
 import Main from './views/Main';
 import Login from './views/Login';
+import Register from './views/Register';
 import Dashboard from './views/Dashboard';
 
 /* eslint-disable */
@@ -24,7 +25,8 @@ class App extends Component {
     return (
       <Router history={history}>
         <Route path="/" component={Main}>
-          <IndexRoute component={Login} />
+          <Route path="login" component={Login} />
+          <Route path="register" component={Register} />
           <Route path="dashboard" component={Dashboard} />
         </Route>
       </Router>

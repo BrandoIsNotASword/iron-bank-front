@@ -6,6 +6,10 @@ export default new Baobab({
     code: '',
     password: ''
   },
+  register: {
+    password: '',
+    repassword: ''
+  },
   dashboard: {}
 }, {
   shiftReferences: true,

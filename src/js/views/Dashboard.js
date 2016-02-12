@@ -19,7 +19,22 @@ class Dashboard extends Component {
   }
 
   render() {
-    return <Paper zDepth={1}>Hola</Paper>;
+    return (
+      <div className="Dashboard">
+        <Paper className="Dashboard__section" zDepth={1}>
+          <p className="Dashboard__title">INFORMACIÓN</p>
+          <div className="Dashboard__content">
+            <p className="Dashboard__information">Nombre: Uriel</p>
+            <p className="Dashboard__information">Email: aero@gmail.com</p>
+            <p className="Dashboard__information">Código de cliente: ASD86233FSDF7</p>
+          </div>
+        </Paper>
+
+        <Paper className="Dashboard__section" zDepth={1}>
+          <p>TU SALDO</p>
+        </Paper>
+      </div>
+    );
   }
 }
 
