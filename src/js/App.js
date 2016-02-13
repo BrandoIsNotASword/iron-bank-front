@@ -12,6 +12,7 @@ import Register from './views/Register';
 import Dashboard from './views/Dashboard';
 import Client from './views/Client';
 import Cashier from './views/Cashier';
+import Executive from './views/Executive';
 
 /* eslint-disable */
 import styles from '../styles/main.scss';
@@ -32,8 +33,9 @@ class App extends Component {
           <Route path="dashboard" component={Dashboard}>
             <Route path="client" component={Client} />
             <Route path="cashier" component={Cashier} />
-            <Route path="executive" />
+            <Route path="executive" component={Executive} />
           </Route>
+          <Route path="profile/:id" />
         </Route>
       </Router>
     );

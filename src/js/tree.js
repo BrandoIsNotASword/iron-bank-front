@@ -15,6 +15,11 @@ export default new Baobab({
     selectedClient: '',
     selectedCard: '',
     showModal: false
+  },
+  executive: {
+    showModalRegister: false,
+    showModalCard: false,
+    selectedClient: ''
   }
 }, {
   shiftReferences: true,
