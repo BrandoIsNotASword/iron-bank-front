@@ -1,0 +1,28 @@
+.Clients {
+  list-style: none;
+
+  .Clients__client .Clients__information {
+    display: flex;
+    list-style: none;
+
+    .Clients__element {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 0.85em;
+    }
+
+    .Clients__element:not(:last-child) {
+      border-right: 1px solid $gray;
+      padding-right: 1em;
+    }
+
+    .Clients__element:not(:first-child) {
+      padding-left: 1em;
+    }
+  }
+
+  .Clients__client:not(:last-child) {
+    border-bottom: 1px solid $gray;
+  }
+}

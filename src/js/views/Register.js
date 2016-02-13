@@ -8,7 +8,6 @@ import NotificationError from '../components/NotificationError';
 import * as RegisterActions from '../actions/RegisterActions';
 
 const {
-  Paper,
   TextField,
   RaisedButton
 } = mui;

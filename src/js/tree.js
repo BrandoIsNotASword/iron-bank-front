@@ -10,7 +10,12 @@ export default new Baobab({
     password: '',
     repassword: ''
   },
-  dashboard: {}
+  client: {},
+  cashier: {
+    selectedClient: '',
+    selectedCard: '',
+    showModal: false
+  }
 }, {
   shiftReferences: true,
   autoCommit: true

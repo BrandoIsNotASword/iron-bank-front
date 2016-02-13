@@ -1,0 +1,24 @@
+.Client {
+  width: 100%;
+
+  .Client__section {
+    padding: 1em;
+
+    .Client__title {
+      margin-bottom: 1em;
+    }
+
+    .Client__information {
+      font-size: 0.95em;
+      padding: 1em 0;
+    }
+
+    .Client__information:not(:last-child) {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  .Client__section:not(:first-child) {
+    margin-top: 1em;
+  }
+}

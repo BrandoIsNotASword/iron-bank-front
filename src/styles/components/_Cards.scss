@@ -1,0 +1,28 @@
+.Cards {
+  list-style: none;
+
+  .Cards__card .Cards__information {
+    display: flex;
+    list-style: none;
+
+    .Cards__element {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 0.85em;
+    }
+
+    .Cards__element:not(:last-child) {
+      border-right: 1px solid $gray;
+      padding-right: 1em;
+    }
+
+    .Cards__element:not(:first-child) {
+      padding-left: 1em;
+    }
+  }
+
+  .Cards__card:not(:last-child) {
+    border-bottom: 1px solid $gray;
+  }
+}

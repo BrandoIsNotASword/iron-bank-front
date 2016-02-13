@@ -5,8 +5,12 @@
 
 @import "components/Page";
 @import "components/NotificationError";
+@import "components/Cards";
+@import "components/Clients";
 
 @import "views/Main";
 @import "views/Login";
 @import "views/Register";
 @import "views/Dashboard";
+@import "views/Client";
+@import "views/Cashier";

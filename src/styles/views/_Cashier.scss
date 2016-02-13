@@ -1,0 +1,24 @@
+.Cashier {
+  width: 100%;
+
+  .Cashier__section {
+    padding: 1em;
+
+    .Cashier__title {
+      margin-bottom: 1em;
+    }
+
+    .Cashier__information {
+      font-size: 0.95em;
+      padding: 1em 0;
+    }
+
+    .Cashier__information:not(:last-child) {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  .Cashier__section:not(:first-child) {
+    margin-top: 1em;
+  }
+}

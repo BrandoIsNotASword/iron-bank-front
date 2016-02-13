@@ -8,7 +8,6 @@ import NotificationError from '../components/NotificationError';
 import * as LoginActions from '../actions/LoginActions';
 
 const {
-  Paper,
   TextField,
   RaisedButton
 } = mui;
