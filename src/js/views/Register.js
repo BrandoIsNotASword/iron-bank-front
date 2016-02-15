@@ -23,12 +23,23 @@ class Register extends Component {
     // FIX: don't trim password.
   }
 
+  componentDidMount() {
+    RegisterActions.setToken(this.props.location.query.token);
+  }
+
   handleChange(name, e) {
     if (e.target.value.trim()) this.actions.setInformation(name, e.target.value);
   }
 
   handleClick() {
-    this.actions.sendInformation();
+    const password = this.refs.password.getValue().trim();
+    const repassword = this.refs.repassword.getValue().trim();
+
+    if ((password && repassword) && (password === repassword)) {
+      this.actions.sendInformation(password);
+    } else {
+      this.actions.setError(true);
+    }
   }
 
   render() {
@@ -36,14 +47,16 @@ class Register extends Component {
       <Page className="Register">
         <p>REGISTRO DE CUENTA</p>
         <p className="Register__subtitle">Ingresa tu contraseña para finalizar registro.</p>
-        <NotificationError />
+        <NotificationError message="Contraseñas incompatibles" error={this.props.error} />
         <TextField
+          ref="password"
           hintText="Contraseña"
           floatingLabelText="Contraseña"
           type="password"
           onChange={this.handleChange.bind(this, 'password')}
         />
         <TextField
+          ref="repassword"
           hintText="Confirma contraseña"
           floatingLabelText="Confirma contraseña"
           type="password"
@@ -62,7 +75,8 @@ class Register extends Component {
 export default branch(Register, {
   cursors: {
     password: ['register', 'password'],
-    repassword: ['register', 'repassword']
+    repassword: ['register', 'repassword'],
+    error: ['register', 'error']
   },
   actions: {
     ...RegisterActions

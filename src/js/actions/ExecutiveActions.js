@@ -1,5 +1,7 @@
 import state from '../tree';
-// import request from 'superagent';
+import api from '../api';
+import * as MainActions from './MainActions';
+import request from 'superagent';
 
 const cursor = state.select('executive');
 
@@ -15,10 +17,24 @@ export function setSelectedClient(tree, selectedClient) {
   cursor.set('selectedClient', selectedClient);
 }
 
+export function setSelectedType(tree, selectedType) {
+  cursor.set('selectedType', selectedType);
+}
+
 /* eslint-disable */
-export function sendInformationRegister(tree, name, surname, email) {
-  console.log(name, surname, email);
-  setShowModalRegister(null, false);
+export function sendInformationRegister(tree, name, last_name, email, phone, address) {
+  const { token } = MainActions.getUser();
+  const type = cursor.get('selectedType');
+
+  request
+    .post(api.newUser)
+    .send({ token, name, last_name, email, phone, address, type })
+    .end((err, res) => {
+      if (res.ok) {
+        console.log(res.body);
+        setShowModalRegister(null, false);
+      }
+    });
 }
 /* eslint-enable */
 

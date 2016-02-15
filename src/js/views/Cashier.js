@@ -6,6 +6,7 @@ import * as CashierActions from '../actions/CashierActions';
 
 import Cards from '../components/Cards';
 import Clients from '../components/Clients';
+import ProfileHeader from '../components/ProfileHeader';
 
 const { Component } = React;
 const {
@@ -99,14 +100,7 @@ class Cashier extends Component {
           />
         </Dialog>
 
-        <Paper className="Cashier__section" zDepth={1}>
-          <p className="Cashier__title">INFORMACIÓN</p>
-          <div className="Cashier__content">
-            <p className="Cashier__information">Nombre: Uriel</p>
-            <p className="Cashier__information">Email: aero@gmail.com</p>
-            <p className="Cashier__information">Código de cajera: ASD86233FSDF7</p>
-          </div>
-        </Paper>
+        <ProfileHeader user={this.props.user} />
 
         <Paper className="Cashier__section">
           <p className="Cashier__title">LISTA DE CLIENTES</p>
@@ -121,6 +115,7 @@ class Cashier extends Component {
 
 export default branch(Cashier, {
   cursors: {
+    user: ['main', 'user'],
     selectedClient: ['cashier', 'selectedClient'],
     showModal: ['cashier', 'showModal']
   },

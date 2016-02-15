@@ -1,14 +1,18 @@
 import Baobab from 'baobab';
 
 export default new Baobab({
-  main: {},
+  main: {
+    user: {}
+  },
   login: {
     code: '',
     password: ''
   },
   register: {
+    token: '',
     password: '',
-    repassword: ''
+    repassword: '',
+    error: false
   },
   client: {},
   cashier: {
@@ -19,7 +23,8 @@ export default new Baobab({
   executive: {
     showModalRegister: false,
     showModalCard: false,
-    selectedClient: ''
+    selectedClient: '',
+    selectedType: ''
   }
 }, {
   shiftReferences: true,

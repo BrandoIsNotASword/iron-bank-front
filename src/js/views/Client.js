@@ -3,6 +3,7 @@ import mui from 'material-ui';
 import { branch } from 'baobab-react/higher-order';
 
 import Cards from '../components/Cards';
+import ProfileHeader from '../components/ProfileHeader';
 
 const { Component } = React;
 const { Paper } = mui;
@@ -24,14 +25,7 @@ class Client extends Component {
   render() {
     return (
       <div className="Client">
-        <Paper className="Client__section" zDepth={1}>
-          <p className="Client__title">INFORMACIÓN</p>
-          <div className="Client__content">
-            <p className="Client__information">Nombre: Uriel</p>
-            <p className="Client__information">Email: aero@gmail.com</p>
-            <p className="Client__information">Código de cliente: ASD86233FSDF7</p>
-          </div>
-        </Paper>
+        <ProfileHeader user={this.props.user} />
 
         <Paper className="Client__section" zDepth={1}>
           <p>TU SALDO</p>
@@ -43,6 +37,8 @@ class Client extends Component {
 }
 
 export default branch(Client, {
-  cursors: {},
+  cursors: {
+    user: ['main', 'user']
+  },
   actions: {}
 });

@@ -3,6 +3,7 @@ import mui from 'material-ui';
 import { branch } from 'baobab-react/higher-order';
 
 import Clients from '../components/Clients';
+import ProfileHeader from '../components/ProfileHeader';
 
 import * as ExecutiveActions from '../actions/ExecutiveActions';
 
@@ -55,10 +56,12 @@ class Executive extends Component {
 
   handleClickAddInformationRegister() {
     const name = this.refs.name.getValue().trim();
-    const surname = this.refs.surname.getValue().trim();
+    const last_name = this.refs.last_name.getValue().trim();
     const email = this.refs.email.getValue().trim();
+    const phone = this.refs.phone.getValue().trim();
+    const address = this.refs.address.getValue().trim();
 
-    if (name && surname && email) this.actions.sendInformationRegister(name, surname, email);
+    this.actions.sendInformationRegister(name, last_name, email, phone, address);
   }
 
   handleClickSendInformationCard() {
@@ -67,6 +70,10 @@ class Executive extends Component {
 
   handleChange(e, value, code) {
     this.actions.setSelectedClient(code);
+  }
+
+  handleChangeType(e, value, type) {
+    this.actions.setSelectedType(type);
   }
 
   renderClients() {
@@ -102,7 +109,7 @@ class Executive extends Component {
             floatingLabelText="Nombre del cliente"
           />
           <TextField
-            ref="surname"
+            ref="last_name"
             hintText="Apellido del cliente"
             floatingLabelText="Apellido del cliente"
           />
@@ -111,6 +118,25 @@ class Executive extends Component {
             hintText="Email del cliente"
             floatingLabelText="Email del cliente"
           />
+          <TextField
+            ref="phone"
+            hintText="Teléfono del cliente"
+            floatingLabelText="Teléfono del cliente"
+          />
+          <TextField
+            ref="address"
+            hintText="Dirección del cliente"
+            floatingLabelText="Dirección del cliente"
+          />
+          <SelectField
+            value={this.props.selectedType}
+            onChange={this.handleChangeType.bind(this)}
+            hintText="Selecciona tipo de cliente"
+          >
+            <MenuItem value="executive" primaryText="Ejecutivo" />
+            <MenuItem value="cashier" primaryText="Cajera" />
+            <MenuItem value="client" primaryText="Cliente" />
+          </SelectField>
         </Dialog>
 
         <Dialog
@@ -141,14 +167,7 @@ class Executive extends Component {
           </SelectField>
         </Dialog>
 
-        <Paper className="Executive__section" zDepth={1}>
-          <p className="Executive__title">INFORMACIÓN</p>
-          <div className="Executive__content">
-            <p className="Executive__information">Nombre: Uriel</p>
-            <p className="Executive__information">Email: aero@gmail.com</p>
-            <p className="Executive__information">Código de ejecutivo: ASD86233FSDF7</p>
-          </div>
-        </Paper>
+        <ProfileHeader user={this.props.user} />
 
         <Paper className="Executive__section">
           <p className="Executive__title">LISTA DE CLIENTES</p>
@@ -175,9 +194,11 @@ Executive.contextTypes = contextTypes;
 
 export default branch(Executive, {
   cursors: {
+    user: ['main', 'user'],
     showModalRegister: ['executive', 'showModalRegister'],
     showModalCard: ['executive', 'showModalCard'],
-    selectedClient: ['executive', 'selectedClient']
+    selectedClient: ['executive', 'selectedClient'],
+    selectedType: ['executive', 'selectedType']
   },
   actions: { ...ExecutiveActions }
 });

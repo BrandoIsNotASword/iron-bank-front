@@ -1,6 +1,7 @@
 import state from '../tree';
 import history from '../history';
-// import request from 'superagent';
+import api from '../api';
+import request from 'superagent';
 
 const cursor = state.select('register');
 
@@ -8,16 +9,24 @@ export function setInformation(tree, name, value) {
   cursor.set(name, value);
 }
 
-export function sendInformation() {
-  history.push('/dashboard');
+export function setToken(token) {
+  cursor.set('token', token);
+}
 
-  /*
+export function setError(tree, error) {
+  cursor.set('error', error);
+}
+
+export function sendInformation(tree, password) {
+  const token = cursor.get('token');
+
   request
-    .post(api.login)
-    .send({})
+    .post(api.setPassword)
+    .send({ token, password })
     .set('Accept', 'application/json')
     .end((err, res) => {
-      history.push('/dashboard');
+      if (res.ok) {
+        history.replace('/login');
+      }
     });
-  */
 }
