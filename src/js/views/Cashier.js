@@ -13,6 +13,7 @@ const {
   Paper,
   Dialog,
   FlatButton,
+  RaisedButton,
   TextField
 } = mui;
 const dummyClients = [
@@ -59,10 +60,20 @@ class Cashier extends Component {
       return (
         <Paper className="Cashier__section" zDepth={1}>
           <p className="Cashier__title">TARJETAS</p>
+
           <div className="Cashier__content">
             <p className="Cashier__information">Nombre de cliente: Uriel</p>
             <p className="Cashier__information">Email: aero@gmail.com</p>
             <p className="Cashier__information">Código de cliente: ASD86233FSDF7</p>
+          </div>
+
+          <div className="Cashier__actions">
+            <RaisedButton
+              primary={true}
+              linkButton={true}
+              label="VER INFORMACIÓN"
+              href={`/#/profile/${this.props.selectedClient}`}
+            />
           </div>
 
           <Cards cards={dummyCards} onClickCard={this.handleClickCard.bind(this)} />

@@ -11,6 +11,10 @@ export function setInformation(tree, name, value) {
   cursor.set(name, value);
 }
 
+export function setLoader(tree, loader) {
+  cursor.set('loader', loader);
+}
+
 export function sendInformation() {
   const code = cursor.get('code');
   const password = cursor.get('password');
@@ -20,6 +24,8 @@ export function sendInformation() {
     .send({ code, password })
     .set('Accept', 'application/json')
     .end((err, res) => {
+      setLoader(null, false);
+
       if (res.ok) {
         MainActions.setUser(res.body.data);
 

@@ -6,13 +6,15 @@ export default new Baobab({
   },
   login: {
     code: '',
-    password: ''
+    password: '',
+    loader: false
   },
   register: {
     token: '',
     password: '',
     repassword: '',
-    error: false
+    error: false,
+    loader: false
   },
   client: {},
   cashier: {

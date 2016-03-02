@@ -8,6 +8,11 @@
       margin-bottom: 1em;
     }
 
+    .Cashier__actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
     .Cashier__information {
       font-size: 0.95em;
       padding: 1em 0;

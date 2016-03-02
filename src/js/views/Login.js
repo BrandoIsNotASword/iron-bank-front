@@ -9,7 +9,8 @@ import * as LoginActions from '../actions/LoginActions';
 
 const {
   TextField,
-  RaisedButton
+  RaisedButton,
+  CircularProgress
 } = mui;
 
 const { Component } = React;
@@ -27,11 +28,23 @@ class Login extends Component {
     if (e.target.value.trim()) this.actions.setInformation(name, e.target.value);
   }
 
-  handleClick() {
+  handleSendInformation() {
+    this.actions.setLoader(true);
     this.actions.sendInformation();
   }
 
   render() {
+    const sendButton =
+      this.props.loader ?
+      <CircularProgress /> :
+      (
+        <RaisedButton
+          label="Entrar"
+          style={{ marginTop: '0.5em' }}
+          onClick={this.handleSendInformation.bind(this)}
+        />
+      );
+
     return (
       <Page>
         <p>INICIA SESIÓN</p>
@@ -46,12 +59,9 @@ class Login extends Component {
           floatingLabelText="Contraseña"
           type="password"
           onChange={this.handleChange.bind(this, 'password')}
+          onEnterKeyDown={this.handleSendInformation.bind(this)}
         />
-        <RaisedButton
-          label="Entrar"
-          style={{ marginTop: '0.5em' }}
-          onClick={this.handleClick.bind(this)}
-        />
+        {sendButton}
       </Page>
     );
   }
@@ -60,7 +70,8 @@ class Login extends Component {
 export default branch(Login, {
   cursors: {
     code: ['login', 'code'],
-    password: ['login', 'password']
+    password: ['login', 'password'],
+    loader: ['login', 'loader']
   },
   actions: {
     ...LoginActions

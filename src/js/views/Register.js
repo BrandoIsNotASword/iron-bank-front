@@ -9,7 +9,8 @@ import * as RegisterActions from '../actions/RegisterActions';
 
 const {
   TextField,
-  RaisedButton
+  RaisedButton,
+  CircularProgress
 } = mui;
 
 const { Component } = React;
@@ -31,23 +32,39 @@ class Register extends Component {
     if (e.target.value.trim()) this.actions.setInformation(name, e.target.value);
   }
 
-  handleClick() {
+  handleSendInformation() {
     const password = this.refs.password.getValue().trim();
     const repassword = this.refs.repassword.getValue().trim();
+
+    this.actions.setLoader(true);
 
     if ((password && repassword) && (password === repassword)) {
       this.actions.sendInformation(password);
     } else {
       this.actions.setError(true);
+      this.actions.setLoader(false);
     }
   }
 
   render() {
+    const sendButton =
+      this.props.loader ?
+      <CircularProgress /> :
+      (
+        <RaisedButton
+          label="Entrar"
+          style={{ marginTop: '0.5em' }}
+          onClick={this.handleSendInformation.bind(this)}
+        />
+      );
+
     return (
       <Page className="Register">
         <p>REGISTRO DE CUENTA</p>
         <p className="Register__subtitle">Ingresa tu contraseña para finalizar registro.</p>
+
         <NotificationError message="Contraseñas incompatibles" error={this.props.error} />
+
         <TextField
           ref="password"
           hintText="Contraseña"
@@ -61,12 +78,9 @@ class Register extends Component {
           floatingLabelText="Confirma contraseña"
           type="password"
           onChange={this.handleChange.bind(this, 'repassword')}
+          onEnterKeyDown={this.handleSendInformation.bind(this)}
         />
-        <RaisedButton
-          label="Entrar"
-          style={{ marginTop: '0.5em' }}
-          onClick={this.handleClick.bind(this)}
-        />
+        {sendButton}
       </Page>
     );
   }
@@ -76,7 +90,8 @@ export default branch(Register, {
   cursors: {
     password: ['register', 'password'],
     repassword: ['register', 'repassword'],
-    error: ['register', 'error']
+    error: ['register', 'error'],
+    loader: ['register', 'loader']
   },
   actions: {
     ...RegisterActions

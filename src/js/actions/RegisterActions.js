@@ -13,6 +13,10 @@ export function setToken(token) {
   cursor.set('token', token);
 }
 
+export function setLoader(tree, loader) {
+  cursor.set('loader', loader);
+}
+
 export function setError(tree, error) {
   cursor.set('error', error);
 }
@@ -25,6 +29,8 @@ export function sendInformation(tree, password) {
     .send({ token, password })
     .set('Accept', 'application/json')
     .end((err, res) => {
+      setLoader(null, false);
+
       if (res.ok) {
         history.replace('/login');
       }
