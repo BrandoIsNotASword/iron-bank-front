@@ -9,7 +9,7 @@ export function setInformation(tree, name, value) {
   cursor.set(name, value);
 }
 
-export function setToken(token) {
+export function setToken(tree, token) {
   cursor.set('token', token);
 }
 

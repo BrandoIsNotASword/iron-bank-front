@@ -21,7 +21,6 @@ export function setSelectedType(tree, selectedType) {
   cursor.set('selectedType', selectedType);
 }
 
-/* eslint-disable */
 export function sendInformationRegister(tree, name, last_name, email, phone, address) {
   const { token } = MainActions.getUser();
   const type = cursor.get('selectedType');
@@ -31,15 +30,12 @@ export function sendInformationRegister(tree, name, last_name, email, phone, add
     .send({ token, name, last_name, email, phone, address, type })
     .end((err, res) => {
       if (res.ok) {
-        console.log(res.body);
         setShowModalRegister(null, false);
       }
     });
 }
-/* eslint-enable */
 
-/* eslint-disable */
-export function sendInformationCard(tree) {
+export function sendInformationCard() {
   const client = cursor.get('selectedClient');
 
   if (client) {
@@ -47,4 +43,3 @@ export function sendInformationCard(tree) {
     cursor.set('selectedClient', '');
   }
 }
-/* eslint-enable */

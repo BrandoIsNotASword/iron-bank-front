@@ -25,21 +25,27 @@ class Clients extends Component {
   }
 
   renderClients() {
-    return this.props.clients.map((client, key) => {
-      return (
-        <ListItem
-          className="Clients__client"
-          key={key + 1}
-          onClick={this.handleClick.bind(this, client.code)}
-        >
-          <ul className="Clients__information">
-            <li className="Clients__element">{client.code}</li>
-            <li className="Clients__element">{client.name}</li>
-            <li className="Clients__element">{client.type.toUpperCase()}</li>
-          </ul>
-        </ListItem>
-      );
+    const clients = [];
+
+    this.props.clients.map((client, key) => {
+      if (client.type === 'client') {
+        clients.push(
+          <ListItem
+            className="Clients__client"
+            key={key + 1}
+            onClick={this.handleClick.bind(this, client.code)}
+          >
+            <ul className="Clients__information">
+              <li className="Clients__element">{client.code}</li>
+              <li className="Clients__element">{client.name.toUpperCase()}</li>
+              <li className="Clients__element">{client.type.toUpperCase()}</li>
+            </ul>
+          </ListItem>
+        );
+      }
     });
+
+    return clients;
   }
 
   render() {

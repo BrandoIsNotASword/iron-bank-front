@@ -1,0 +1,24 @@
+.Profile {
+  width: 100%;
+
+  .Profile__section {
+    padding: 1em;
+
+    .Profile__title {
+      margin-bottom: 1em;
+    }
+
+    .Profile__information {
+      font-size: 0.95em;
+      padding: 1em 0;
+    }
+
+    .Profile__information:not(:last-child) {
+      border-bottom: 1px solid $gray;
+    }
+  }
+
+  .Profile__section:not(:first-child) {
+    margin-top: 1em;
+  }
+}

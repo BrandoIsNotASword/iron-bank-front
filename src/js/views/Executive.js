@@ -7,7 +7,7 @@ import ProfileHeader from '../components/ProfileHeader';
 
 import * as ExecutiveActions from '../actions/ExecutiveActions';
 
-const { PropTypes, Component } = React;
+const { Component } = React;
 const {
   Paper,
   Dialog,
@@ -16,16 +16,6 @@ const {
   SelectField,
   MenuItem
 } = mui;
-const dummyClients = [
-  { code: 'ASD86233FSDF7', name: 'Brando Pérez Pacheco1', type: 'client' },
-  { code: 'ASD86233FSDF8', name: 'Brando Pérez Pacheco2', type: 'client' },
-  { code: 'ASD86233FSDF9', name: 'Brando Pérez Pacheco3', type: 'client' },
-  { code: 'ASD86233FSDF6', name: 'Brando Pérez Pacheco4', type: 'client' },
-  { code: 'ASD86233FSDF5', name: 'Brando Pérez Pacheco5', type: 'client' }
-];
-const contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 class Executive extends Component {
   constructor(props) {
@@ -43,7 +33,7 @@ class Executive extends Component {
   }
 
   handleClickClient(clientCode) {
-    this.context.router.push(`profile/${clientCode}`);
+    window.open(`/#/profile/${clientCode}`);
   }
 
   handleClickCancelRegister() {
@@ -77,9 +67,15 @@ class Executive extends Component {
   }
 
   renderClients() {
-    return dummyClients.map((client, key) => {
-      return <MenuItem key={key} value={client.code} primaryText={client.name} />;
+    const menuItems = [];
+
+    this.props.clients.map((client, key) => {
+      if (client.type === 'client') {
+        menuItems.push(<MenuItem key={key} value={client.code} primaryText={client.name} />);
+      }
     });
+
+    return menuItems;
   }
 
   render() {
@@ -171,7 +167,10 @@ class Executive extends Component {
 
         <Paper className="Executive__section">
           <p className="Executive__title">LISTA DE CLIENTES</p>
-          <Clients clients={dummyClients} onClickClient={this.handleClickClient.bind(this)} />
+          <Clients
+            clients={this.props.clients}
+            onClickClient={this.handleClickClient.bind(this)}
+          />
           <div className="Executive__actions">
             <FlatButton
               label="Registrar cliente"
@@ -190,11 +189,10 @@ class Executive extends Component {
   }
 }
 
-Executive.contextTypes = contextTypes;
-
 export default branch(Executive, {
   cursors: {
     user: ['main', 'user'],
+    clients: ['main', 'clients'],
     showModalRegister: ['executive', 'showModalRegister'],
     showModalCard: ['executive', 'showModalCard'],
     selectedClient: ['executive', 'selectedClient'],

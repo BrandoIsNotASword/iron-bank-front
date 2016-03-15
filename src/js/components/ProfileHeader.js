@@ -27,12 +27,12 @@ class ProfileHeader extends Component {
       <Paper className="ProfileHeader__section" zDepth={1}>
         <p className="ProfileHeader__title">INFORMACIÓN</p>
         <div className="ProfileHeader__content">
-          <p className="ProfileHeader__information">Nombre: { `${name} ${last_name}` }</p>
-          <p className="ProfileHeader__information">Email: { email }</p>
-          <p className="ProfileHeader__information">Teléfono: { phone }</p>
-          <p className="ProfileHeader__information">Dirección: { address }</p>
-          <p className="ProfileHeader__information">Tipo de usuario: { type }</p>
-          <p className="ProfileHeader__information">Código de usuario: { code }</p>
+          <p className="ProfileHeader__information">Nombre: {`${name} ${last_name}`}</p>
+          <p className="ProfileHeader__information">Email: {email}</p>
+          <p className="ProfileHeader__information">Teléfono: {phone}</p>
+          <p className="ProfileHeader__information">Dirección: {address}</p>
+          <p className="ProfileHeader__information">Tipo de usuario: {type}</p>
+          <p className="ProfileHeader__information">Código de usuario: {code}</p>
         </div>
       </Paper>
     );

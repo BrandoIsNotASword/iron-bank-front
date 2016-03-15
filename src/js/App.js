@@ -9,6 +9,7 @@ import tree from './tree';
 import Main from './views/Main';
 import Login from './views/Login';
 import Register from './views/Register';
+import Profile from './views/Profile';
 import Dashboard from './views/Dashboard';
 import Client from './views/Client';
 import Cashier from './views/Cashier';
@@ -35,13 +36,13 @@ class App extends Component {
             <Route path="cashier" component={Cashier} />
             <Route path="executive" component={Executive} />
           </Route>
-          <Route path="profile/:id" />
+          <Route path="profile/:id" component={Profile} />
         </Route>
       </Router>
     );
   }
 }
 
-const RooterApp = root(App, tree);
+const RootedApp = root(App, tree);
 
-ReactDOM.render(<RooterApp />, document.getElementById('app'));
+ReactDOM.render(<RootedApp />, document.getElementById('app'));

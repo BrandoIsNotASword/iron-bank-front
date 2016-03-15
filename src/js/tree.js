@@ -1,8 +1,11 @@
 import Baobab from 'baobab';
 
+const user = JSON.parse(localStorage.getItem('user'));
+
 export default new Baobab({
   main: {
-    user: {}
+    user: user || {},
+    clients: []
   },
   login: {
     code: '',
@@ -15,6 +18,9 @@ export default new Baobab({
     repassword: '',
     error: false,
     loader: false
+  },
+  profile: {
+    client: {}
   },
   client: {},
   cashier: {

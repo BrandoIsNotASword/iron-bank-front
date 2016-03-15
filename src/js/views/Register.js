@@ -25,7 +25,7 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    RegisterActions.setToken(this.props.location.query.token);
+    this.actions.setToken(this.props.location.query.token);
   }
 
   handleChange(name, e) {
@@ -93,7 +93,5 @@ export default branch(Register, {
     error: ['register', 'error'],
     loader: ['register', 'loader']
   },
-  actions: {
-    ...RegisterActions
-  }
+  actions: { ...RegisterActions }
 });
