@@ -13,7 +13,7 @@ export function getUser() {
   return cursor.get('user');
 }
 
-export function getClients() {
+export function getUsers() {
   request
     .get(api.users)
     .end((err, res) => {

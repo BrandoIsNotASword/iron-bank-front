@@ -25,4 +25,8 @@
   .Clients__client:not(:last-child) {
     border-bottom: 1px solid $gray;
   }
+
+  .Clients__message {
+    text-align: center;
+  }
 }

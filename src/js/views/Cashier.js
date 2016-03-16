@@ -102,7 +102,7 @@ class Cashier extends Component {
         <Paper className="Cashier__section">
           <p className="Cashier__title">LISTA DE CLIENTES</p>
           <Clients
-            clients={this.props.clients}
+            clients={this.props.clients.filter((client) => client.type === 'client')}
             onClickClient={this.handleClickClient.bind(this)}
           />
         </Paper>

@@ -27,10 +27,10 @@ class Dashboard extends Component {
     let view;
 
     switch (this.props.user.type) {
-    case 'admin': view =  <Admin />; break;
-    case 'executive': view =  <Executive />; break;
-    case 'cashier': view =  <Cashier />; break;
-    case 'client': view =  <Client />; break;
+    case 'admin': view = <Admin />; break;
+    case 'executive': view = <Executive />; break;
+    case 'cashier': view = <Cashier />; break;
+    case 'client': view = <Client />; break;
     default: break;
     }
 

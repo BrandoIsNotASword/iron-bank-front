@@ -13,7 +13,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.actions.getClients();
+    this.actions.getUsers();
   }
 
   render() {

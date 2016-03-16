@@ -5,6 +5,7 @@ export default {
   newUser: BASE_URL + 'users',
   users: BASE_URL + 'users',
   getUser: BASE_URL + 'users/{id}',
+  deleteUser: BASE_URL + 'users/{id}',
   cards: BASE_URL + 'cards',
   updateCard: BASE_URL + 'cards/{id}',
   getCards: BASE_URL + 'users/{id}',

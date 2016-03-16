@@ -27,22 +27,22 @@ class Clients extends Component {
   renderClients() {
     const clients = [];
 
+    if (!this.props.clients.length) return <div className="Clients__message">No hay clientes</div>;
+
     this.props.clients.map((client, key) => {
-      if (client.type === 'client') {
-        clients.push(
-          <ListItem
-            className="Clients__client"
-            key={key + 1}
-            onClick={this.handleClick.bind(this, client.code)}
-          >
-            <ul className="Clients__information">
-              <li className="Clients__element">{client.code}</li>
-              <li className="Clients__element">{client.name.toUpperCase()}</li>
-              <li className="Clients__element">{client.type.toUpperCase()}</li>
-            </ul>
-          </ListItem>
-        );
-      }
+      clients.push(
+        <ListItem
+          className="Clients__client"
+          key={key + 1}
+          onClick={this.handleClick.bind(this, client.code)}
+        >
+          <ul className="Clients__information">
+            <li className="Clients__element">{client.code}</li>
+            <li className="Clients__element">{client.name.toUpperCase()}</li>
+            <li className="Clients__element">{client.type.toUpperCase()}</li>
+          </ul>
+        </ListItem>
+      );
     });
 
     return clients;

@@ -195,7 +195,7 @@ class Executive extends Component {
         <Paper className="Executive__section">
           <p className="Executive__title">LISTA DE CLIENTES</p>
           <Clients
-            clients={this.props.clients}
+            clients={this.props.clients.filter((client) => client.type === 'client')}
             onClickClient={this.handleClickClient.bind(this)}
           />
           <div className="Executive__actions">

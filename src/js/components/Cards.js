@@ -25,6 +25,8 @@ class Cards extends Component {
   }
 
   renderCards() {
+    if (!this.props.cards.length) return <div className="Cards__message">No hay tarjetas</div>;
+
     return this.props.cards.map((card, key) => {
       return (
         <ListItem

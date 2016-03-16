@@ -1,0 +1,16 @@
+.Admin {
+  .Admin__users{
+    margin-top: 1em;
+    padding: 1em;
+  }
+
+  .Admin__section {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid black + 200;
+
+    .Admin__sectionTitle {
+      font-weight: $bold;
+    }
+  }
+}

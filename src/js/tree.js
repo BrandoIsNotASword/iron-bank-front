@@ -19,6 +19,9 @@ export default new Baobab({
     error: false,
     loader: false
   },
+  admin: {
+    showModal: false
+  },
   profile: {
     client: {},
     loader: true
