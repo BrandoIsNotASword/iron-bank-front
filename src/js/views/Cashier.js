@@ -6,7 +6,6 @@ import * as CashierActions from '../actions/CashierActions';
 
 import Cards from '../components/Cards';
 import Clients from '../components/Clients';
-import ProfileHeader from '../components/ProfileHeader';
 
 const { Component } = React;
 const {
@@ -99,8 +98,6 @@ class Cashier extends Component {
             floatingLabelText="Agregar saldo"
           />
         </Dialog>
-
-        <ProfileHeader user={this.props.user} />
 
         <Paper className="Cashier__section">
           <p className="Cashier__title">LISTA DE CLIENTES</p>

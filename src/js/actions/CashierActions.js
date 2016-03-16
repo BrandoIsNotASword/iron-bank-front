@@ -25,7 +25,6 @@ export function setSelectedCard(tree, selectedCard) {
   cursor.set('selectedCard', selectedCard);
 }
 
-/* eslint-disable */
 export function sendMoney(tree, amount) {
   const { token } = MainActions.getUser();
   const card = cursor.get('selectedCard');
@@ -40,4 +39,3 @@ export function sendMoney(tree, amount) {
       }
     });
 }
-/* eslint-enable */

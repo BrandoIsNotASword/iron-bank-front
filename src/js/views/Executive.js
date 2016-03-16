@@ -3,7 +3,6 @@ import mui from 'material-ui';
 import { branch } from 'baobab-react/higher-order';
 
 import Clients from '../components/Clients';
-import ProfileHeader from '../components/ProfileHeader';
 
 import * as ExecutiveActions from '../actions/ExecutiveActions';
 
@@ -22,6 +21,10 @@ class Executive extends Component {
     super(props);
 
     this.actions = { ...this.props.actions };
+  }
+
+  componentWillUnmount() {
+    this.actions.clean();
   }
 
   handleClickShowModalRegister() {
@@ -188,8 +191,6 @@ class Executive extends Component {
             <MenuItem value="black" primaryText="Black" />
           </SelectField>
         </Dialog>
-
-        <ProfileHeader user={this.props.user} />
 
         <Paper className="Executive__section">
           <p className="Executive__title">LISTA DE CLIENTES</p>

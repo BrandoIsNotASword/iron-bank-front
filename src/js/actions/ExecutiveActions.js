@@ -62,3 +62,12 @@ export function sendInformationCard() {
       }
     });
 }
+
+export function clean() {
+  cursor.set('showModalRegister', false);
+  cursor.set('showModalCard', false);
+  cursor.set('selectedClient', '');
+  cursor.set('selectedType', '');
+  cursor.set('selectedTypeCard', '');
+  cursor.set('selectedNameCard', '');
+}
