@@ -94,6 +94,7 @@ class Executive extends Component {
         <Dialog
           title="REGISTRAR NUEVO CLIENTE"
           bodyClassName="Executive__register"
+          bodyStyle={{ overflowY: 'auto' }}
           actions={[
             <FlatButton
               label="Cancelar"
