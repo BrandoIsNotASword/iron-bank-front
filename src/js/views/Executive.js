@@ -58,7 +58,7 @@ class Executive extends Component {
     this.actions.sendInformationCard();
   }
 
-  handleChange(e, value, code) {
+  handleChangeClient(e, value, code) {
     this.actions.setSelectedClient(code);
   }
 
@@ -66,9 +66,16 @@ class Executive extends Component {
     this.actions.setSelectedType(type);
   }
 
+  handleChangeTypeCard(e, value, typeCard) {
+    this.actions.setSelectedTypeCard(typeCard);
+  }
+
+  handleChangeNameCard(e, value, nameCard) {
+    this.actions.setSelectedNameCard(nameCard);
+  }
+
   renderClients() {
     const menuItems = [];
-
     this.props.clients.map((client, key) => {
       if (client.type === 'client') {
         menuItems.push(<MenuItem key={key} value={client.code} primaryText={client.name} />);
@@ -153,13 +160,32 @@ class Executive extends Component {
           modal={true}
           open={this.props.showModalCard}
         >
-          <p>Selecciona el cliente al que le asignarás una tarjeta:</p>
           <SelectField
             value={this.props.selectedClient}
-            hintText="Seleccionar cliente"
-            onChange={this.handleChange.bind(this)}
+            hintText="Selecciona cliente"
+            onChange={this.handleChangeClient.bind(this)}
           >
             {this.renderClients()}
+          </SelectField>
+          <SelectField
+            value={this.props.selectedTypeCard}
+            hintText="Selecciona tipo de tarjeta"
+            onChange={this.handleChangeTypeCard.bind(this)}
+          >
+            <MenuItem value="debit" primaryText="Debito" />
+            <MenuItem value="credit" primaryText="Crédito" />
+          </SelectField>
+          <SelectField
+            value={this.props.selectedNameCard}
+            hintText="Selecciona nombre de tarjeta"
+            onChange={this.handleChangeNameCard.bind(this)}
+          >
+            <MenuItem value="nomina" primaryText="Nómina" />
+            <MenuItem value="ahorro" primaryText="Ahorro" />
+            <MenuItem value="ejecutiva" primaryText="Ejecutiva" />
+            <MenuItem value="light" primaryText="Light" />
+            <MenuItem value="oro" primaryText="Oro" />
+            <MenuItem value="black" primaryText="Black" />
           </SelectField>
         </Dialog>
 
@@ -196,7 +222,9 @@ export default branch(Executive, {
     showModalRegister: ['executive', 'showModalRegister'],
     showModalCard: ['executive', 'showModalCard'],
     selectedClient: ['executive', 'selectedClient'],
-    selectedType: ['executive', 'selectedType']
+    selectedType: ['executive', 'selectedType'],
+    selectedTypeCard: ['executive', 'selectedTypeCard'],
+    selectedNameCard: ['executive', 'selectedNameCard']
   },
   actions: { ...ExecutiveActions }
 });

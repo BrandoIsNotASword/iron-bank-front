@@ -16,13 +16,6 @@ const {
   RaisedButton,
   TextField
 } = mui;
-const dummyCards = [
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' }
-];
 
 class Cashier extends Component {
   constructor(props) {
@@ -48,11 +41,9 @@ class Cashier extends Component {
     if (money) this.actions.sendMoney(money);
   }
 
-  renderClientCards() {
+  renderClientInformation() {
     if (this.props.selectedClient) {
-      const selectedClient = this.props.clients.filter((client) => {
-        return client.id === this.props.selectedClient;
-      })[0];
+      const selectedClient = this.props.selectedClient;
 
       return (
         <Paper className="Cashier__section" zDepth={1}>
@@ -62,7 +53,6 @@ class Cashier extends Component {
             <p className="Cashier__information">
               Nombre de cliente: {selectedClient.name + selectedClient.last_name}
             </p>
-            <p className="Cashier__information">Email: {selectedClient.email}</p>
             <p className="Cashier__information">Código de cliente: {selectedClient.code}</p>
           </div>
 
@@ -76,7 +66,7 @@ class Cashier extends Component {
             />
           </div>
 
-          <Cards cards={dummyCards} onClickCard={this.handleClickCard.bind(this)} />
+          <Cards cards={selectedClient.cards} onClickCard={this.handleClickCard.bind(this)} />
         </Paper>
       );
     }
@@ -105,7 +95,6 @@ class Cashier extends Component {
           <TextField
             ref="money"
             type="number"
-            min="1"
             hintText="Agregar saldo"
             floatingLabelText="Agregar saldo"
           />
@@ -121,7 +110,7 @@ class Cashier extends Component {
           />
         </Paper>
 
-        {this.renderClientCards()}
+        {this.renderClientInformation()}
       </div>
     );
   }
@@ -132,6 +121,7 @@ export default branch(Cashier, {
     user: ['main', 'user'],
     clients: ['main', 'clients'],
     selectedClient: ['cashier', 'selectedClient'],
+    selectedClientCards: ['cashier', 'selectedClientCards'],
     showModal: ['cashier', 'showModal']
   },
   actions: { ...CashierActions }

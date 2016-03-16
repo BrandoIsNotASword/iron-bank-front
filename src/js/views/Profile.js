@@ -1,5 +1,5 @@
 import React from 'react';
-import mui from 'material-ui';
+import { Paper, CircularProgress } from 'material-ui';
 import { branch } from 'baobab-react/higher-order';
 
 import Cards from '../components/Cards';
@@ -8,14 +8,6 @@ import ProfileHeader from '../components/ProfileHeader';
 import * as ProfileActions from '../actions/ProfileActions';
 
 const { Component } = React;
-const { Paper } = mui;
-const dummyCards = [
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' }
-];
 
 class Profile extends Component {
   constructor(props) {
@@ -29,13 +21,15 @@ class Profile extends Component {
   }
 
   render() {
+    if (this.props.loader) return <CircularProgress />;
+
     return (
       <div className="Profile">
         <ProfileHeader user={this.props.client} />
 
         <Paper className="Profile__section" zDepth={1}>
           <p>TU SALDO</p>
-          <Cards cards={dummyCards} />
+          <Cards cards={this.props.client.cards} />
         </Paper>
       </div>
     );
@@ -44,7 +38,8 @@ class Profile extends Component {
 
 export default branch(Profile, {
   cursors: {
-    client: ['profile', 'client']
+    client: ['profile', 'client'],
+    loader: ['profile', 'loader']
   },
   actions: { ...ProfileActions }
 });

@@ -1,7 +1,8 @@
 import state from '../tree';
 import api from '../api';
-import * as MainActions from './MainActions';
 import request from 'superagent';
+
+import * as MainActions from './MainActions';
 
 const cursor = state.select('executive');
 
@@ -21,6 +22,14 @@ export function setSelectedType(tree, selectedType) {
   cursor.set('selectedType', selectedType);
 }
 
+export function setSelectedTypeCard(tree, selectedTypeCard) {
+  cursor.set('selectedTypeCard', selectedTypeCard);
+}
+
+export function setSelectedNameCard(tree, selectedNameCard) {
+  cursor.set('selectedNameCard', selectedNameCard);
+}
+
 export function sendInformationRegister(tree, name, last_name, email, phone, address) {
   const { token } = MainActions.getUser();
   const type = cursor.get('selectedType');
@@ -36,10 +45,20 @@ export function sendInformationRegister(tree, name, last_name, email, phone, add
 }
 
 export function sendInformationCard() {
-  const client = cursor.get('selectedClient');
+  const { token } = MainActions.getUser();
+  const user_id = cursor.get('selectedClient');
+  const type = cursor.get('selectedTypeCard');
+  const name = cursor.get('selectedNameCard');
 
-  if (client) {
-    setShowModalCard(null, false);
-    cursor.set('selectedClient', '');
-  }
+  request
+    .post(api.cards)
+    .send({ token, user_id, type, name })
+    .end((err, res) => {
+      if (res.ok) {
+        setShowModalCard(null, false);
+        cursor.set('selectedClient', '');
+        cursor.set('selectedTypeCard', '');
+        cursor.set('selectedNameCard', '');
+      }
+    });
 }

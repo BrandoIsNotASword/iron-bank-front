@@ -32,7 +32,7 @@ export function sendInformation(tree, password) {
       setLoader(null, false);
 
       if (res.ok) {
-        history.replace('/login');
+        history.replace('/');
       }
     });
 }

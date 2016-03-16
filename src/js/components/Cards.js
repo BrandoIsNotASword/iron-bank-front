@@ -20,8 +20,8 @@ class Cards extends Component {
     super(props);
   }
 
-  handleClickCard(cardCode) {
-    this.props.onClickCard(cardCode);
+  handleClickCard(card) {
+    this.props.onClickCard(card);
   }
 
   renderCards() {
@@ -30,11 +30,12 @@ class Cards extends Component {
         <ListItem
           className="Cards__card"
           key={key + 1}
-          onClick={this.handleClickCard.bind(this, card.code)}
+          onClick={this.handleClickCard.bind(this, card.card_number)}
         >
           <ul className="Cards__information">
-            <li className="Cards__element">{card.code}</li>
-            <li className="Cards__element">{`$${card.money}`}</li>
+            <li className="Cards__element">{card.card_number}</li>
+            <li className="Cards__element">{`$${card.amount}`}</li>
+            <li className="Cards__element">{card.name.toUpperCase()}</li>
             <li className="Cards__element">{card.type.toUpperCase()}</li>
           </ul>
         </ListItem>
@@ -49,6 +50,7 @@ class Cards extends Component {
           <ul className="Cards__information">
             <li className="Cards__element">CÓDIGO</li>
             <li className="Cards__element">SALDO</li>
+            <li className="Cards__element">NOMBRE</li>
             <li className="Cards__element">TIPO</li>
           </ul>
         </ListItem>

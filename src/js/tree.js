@@ -20,9 +20,12 @@ export default new Baobab({
     loader: false
   },
   profile: {
-    client: {}
+    client: {},
+    loader: true
   },
-  client: {},
+  client: {
+    cards: []
+  },
   cashier: {
     selectedClient: '',
     selectedCard: '',
@@ -32,7 +35,9 @@ export default new Baobab({
     showModalRegister: false,
     showModalCard: false,
     selectedClient: '',
-    selectedType: ''
+    selectedType: '',
+    selectedTypeCard: '',
+    selectedNameCard: ''
   }
 }, {
   shiftReferences: true,

@@ -5,21 +5,20 @@ import { branch } from 'baobab-react/higher-order';
 import Cards from '../components/Cards';
 import ProfileHeader from '../components/ProfileHeader';
 
+import * as ClientActions from '../actions/ClientActions';
+
 const { Component } = React;
 const { Paper } = mui;
-const dummyCards = [
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' },
-  { code: 'ASD86233FSDF7', money: 1, type: 'client' }
-];
 
 class Client extends Component {
   constructor(props) {
     super(props);
 
     this.actions = { ...this.props.actions };
+  }
+
+  componentDidMount() {
+    this.actions.getCardsByClient();
   }
 
   render() {
@@ -29,7 +28,7 @@ class Client extends Component {
 
         <Paper className="Client__section" zDepth={1}>
           <p>TU SALDO</p>
-          <Cards cards={dummyCards} />
+          <Cards cards={this.props.cards} />
         </Paper>
       </div>
     );
@@ -38,7 +37,8 @@ class Client extends Component {
 
 export default branch(Client, {
   cursors: {
-    user: ['main', 'user']
+    user: ['main', 'user'],
+    cards: ['client', 'cards']
   },
-  actions: {}
+  actions: { ...ClientActions }
 });

@@ -28,14 +28,7 @@ export function sendInformation() {
 
       if (res.ok) {
         MainActions.setUser(res.body.data);
-
-        switch (res.body.data.type) {
-        case 'admin': history.replace('/dashboard/executive'); break;
-        case 'executive': history.replace('/dashboard/executive'); break;
-        case 'cashier': history.replace('/dashboard/cashier'); break;
-        case 'client': history.replace('/dashboard/client'); break;
-        default: break;
-        }
+        history.replace('/dashboard');
       }
     });
 }
