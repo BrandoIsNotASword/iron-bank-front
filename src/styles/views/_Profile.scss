@@ -20,5 +20,11 @@
 
   .Profile__section:not(:first-child) {
     margin-top: 1em;
+
+    .Profile__transaction {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1em;
+    }
   }
 }

@@ -24,7 +24,9 @@ export default new Baobab({
   },
   profile: {
     client: {},
-    loader: true
+    loader: true,
+    showModal: false,
+    selectedBank: 'iron_bank'
   },
   client: {
     cards: []

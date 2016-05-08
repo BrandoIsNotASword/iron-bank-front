@@ -3,7 +3,6 @@ import mui from 'material-ui';
 import { branch } from 'baobab-react/higher-order';
 
 import Cards from '../components/Cards';
-import ProfileHeader from '../components/ProfileHeader';
 
 import * as ClientActions from '../actions/ClientActions';
 
@@ -24,8 +23,6 @@ class Client extends Component {
   render() {
     return (
       <div className="Client">
-        <ProfileHeader user={this.props.user} />
-
         <Paper className="Client__section" zDepth={1}>
           <p>TU SALDO</p>
           <Cards cards={this.props.cards} />
