@@ -29,7 +29,9 @@ export default new Baobab({
     selectedBank: 'iron_bank'
   },
   client: {
-    cards: []
+    cards: [],
+    showModal: false,
+    selectedBank: 'iron_bank'
   },
   cashier: {
     selectedClient: '',

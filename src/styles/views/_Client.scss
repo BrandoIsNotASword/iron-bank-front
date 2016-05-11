@@ -16,6 +16,11 @@
     .Client__information:not(:last-child) {
       border-bottom: 1px solid $gray;
     }
+
+    .Client__transaction {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   .Client__section:not(:first-child) {

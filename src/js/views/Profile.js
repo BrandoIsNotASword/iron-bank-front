@@ -116,7 +116,6 @@ class Profile extends Component {
         <Paper className="Profile__section" zDepth={1}>
           <p>TU SALDO</p>
           <Cards cards={this.props.client.cards} />
-          {this.renderTransaction}
         </Paper>
       </div>
     );
